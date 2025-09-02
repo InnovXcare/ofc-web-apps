@@ -375,6 +375,7 @@
     // TODO: allow several instances on one page simultaneously
 
     DocsAPI.DocEditor = function(placeholderId, config) {
+        console.trace(config)
         var _self = this,
             _config = config || {};
 
@@ -1306,7 +1307,7 @@
 
     function extendAppPath(config,  path) {
         if ( !config.isLocalFile ) {
-            const ver = '/{{PRODUCT_VERSION}}-{{HASH_POSTFIX}}';
+            const ver = '/{{PRODUCT_VERSION}}-d54ce8b4b24ac76c1eaeb465b137309c';
             if ( ver.lastIndexOf('{{') < 0 && path.indexOf(ver) < 0 ) {
                 const pos = path.indexOf('/web-apps/app');
                 if ( pos > 0 )

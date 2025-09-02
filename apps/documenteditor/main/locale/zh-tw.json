@@ -3763,5 +3763,6 @@
   "DE.Views.FileMenuPanels.Settings.strNumeral": "Numeral",
   "DE.Views.FileMenuPanels.Settings.txtArabic": "Arabic",
   "DE.Views.FileMenuPanels.Settings.txtContext": "Context",
-  "DE.Views.FileMenuPanels.Settings.txtHindi": "Hindi"
+  "DE.Views.FileMenuPanels.Settings.txtHindi": "Hindi",
+  "DE.Views.SignatureSettings.txtSignedForm": "This document has been signed and can not be edited."
 }

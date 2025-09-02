@@ -3763,5 +3763,6 @@
   "DE.Views.WatermarkSettingsDialog.textTransparency": "Halbtransparent",
   "DE.Views.WatermarkSettingsDialog.textUnderline": "Unterstrichen",
   "DE.Views.WatermarkSettingsDialog.tipFontName": "Schriftartname",
-  "DE.Views.WatermarkSettingsDialog.tipFontSize": "Schriftgrad"
+  "DE.Views.WatermarkSettingsDialog.tipFontSize": "Schriftgrad",
+  "DE.Views.SignatureSettings.txtSignedForm": "This document has been signed and can not be edited."
 }

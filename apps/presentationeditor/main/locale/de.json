@@ -3036,5 +3036,6 @@
   "PE.Views.ViewTab.tipMacros": "Makros",
   "PE.Views.ViewTab.tipNormal": "Normal",
   "PE.Views.ViewTab.tipSelectTool": "Auswählungstool",
-  "PE.Views.ViewTab.tipSlideMaster": "Folienmaster"
+  "PE.Views.ViewTab.tipSlideMaster": "Folienmaster",
+  "PE.Views.PrintWithPreview.txtCustom": "Custom"
 }
