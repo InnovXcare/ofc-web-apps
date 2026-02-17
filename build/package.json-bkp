@@ -35,13 +35,9 @@
   "overrides": {
     "http-cache-semantics": "4.1.1",
     "css-select": "4.3.0",
-    "semver-regex": "3.1.4",
+    "semver-regex": "3.1.3",
     "trim-newlines": "3.0.1",
     "mkdirp": "0.5.6",
-    "tough-cookie": "^4.1.3",
-    "ws": "^7.5.10",
-    "lodash.trim": "^4.5.2",
-    "cross-spawn": "^7.0.3",
     "requirejs": "2.3.7",
     "less-plugin-clean-css@1.5.1": {
       "clean-css": "5.3.3"
@@ -49,6 +45,7 @@
   },
   "devDependencies": {
     "chai": "^5.1.0",
-    "mocha": "^10.2.0"
+    "grunt-mocha": "^1.2.0",
+    "mocha": "^10.8.2"
   }
 }
