@@ -541,7 +541,6 @@ define(["core"], function () {
             };
             // write_theme_css(item.id, create_colors_css(item.id, item.colors));
           } else if (typeof item == "string") {
-            console.log("FROM PARSE THEMES OBJ :::");
             get_themes_config(item);
           }
         });
@@ -605,7 +604,6 @@ define(["core"], function () {
 
     var get_themes_config = function (url) {
       const me = this;
-      console.trace("GET_THEMES_CONFIG");
       Common.Utils.loadConfig(url, function (obj) {
         if (obj != "error") {
           parse_themes_object(obj);
