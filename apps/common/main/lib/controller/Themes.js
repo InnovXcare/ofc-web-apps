@@ -121,24 +121,113 @@ define(["core"], function () {
       },
       "theme-id-spark-theme": {
         text: "Spark Theme",
-        type: "",
+        type: "dark",
         source: "",
-        // src: {
-        //   id: "theme-id-spark-theme",
-        //   colors: {
-        //     "canvas-background": "#191a36",
-        //     // ... all other colors
-        //   },
-        // },
+        src: {
+          id: "theme-id-spark-theme",
+          colors: {
+            "toolbar-header-document": "#141429",
+            "text-toolbar-header-on-background-document": "#191a36",
+
+            "background-normal": "#191a36",
+            "background-toolbar": "#191a36",
+            "background-toolbar-additional": "#505050",
+            "background-primary-dialog-button": "#48c0f0",
+            "background-accent-button": "#48c0f0",
+            "background-tab-underline": "#48c0f0",
+            "background-notification-popover": "#3e5968",
+            "background-notification-badge": "#48c0f0",
+            "background-scrim": "rgba(0, 0, 0, 0.6)",
+            "background-loader": "rgba(24, 24, 24, 0.9)",
+            "background-alt-key-hint": "#FFD938",
+            "background-contrast-popover": "#313131",
+            "background-fill-button": "#48c0f0",
+
+            "highlight-toolbar-tab-underline": "#48c0f0",
+            "background-accent": "#48c0f0",
+            "background-toolbar-header": "#191a36",
+
+            "highlight-toolbar-tab-underline-document": "#48c0f0",
+            "highlight-button-hover": "#535C68",
+            "highlight-button-pressed": "#49617D",
+            "highlight-button-pressed-hover": "#808080",
+            "highlight-primary-dialog-button-hover": "rgba(72, 192, 240,0.85)",
+            "highlight-accent-button-hover": "rgba(72, 192, 240,0.05)",
+            "highlight-accent-button-pressed": "#89afdc",
+            "highlight-header-button-hover": "rgba(72, 192, 240,0.05)",
+            "highlight-header-button-pressed": "rgba(255, 255, 255, 0.15)",
+            "highlight-header-tab-underline-document": "#48c0f0",
+            "highlight-text-select": "#96c8fd",
+
+            "border-toolbar": "#565656",
+            "border-toolbar-active-panel-top": "#565656",
+            "border-divider": "#505050",
+            "border-regular-control": "#666",
+            "border-toolbar-button-hover": "#5a5a5a",
+            "border-preview-hover": "#757575",
+            "border-preview-select": "#48c0f0",
+            "border-control-focus": "#48c0f0",
+            "border-color-shading": "rgba(255, 255, 255, 0.1)",
+            "border-error": "#b3261e",
+            "border-contrast-popover": "#666",
+
+            "text-normal": "rgba(255, 255, 255, 0.8)",
+            "text-normal-pressed": "rgba(255, 255, 255, 0.8)",
+            "text-secondary": "black",
+            "text-tertiary": "rgba(255, 255, 255, 0.4)",
+            "text-link": "#b5e4ff",
+            "text-link-hover": "#b5e4ff",
+            "text-link-active": "#b5e4ff",
+            "text-link-visited": "#b5e4ff",
+            "text-inverse": "black",
+            "text-toolbar-header": "rgba(255, 255, 255, 0.8)",
+            "text-contrast-background": "#fff",
+            "text-alt-key-hint": "#2a2a2a",
+
+            "icon-normal": "#666666",
+            "icon-normal-pressed": "#666666",
+            "icon-inverse": "#444",
+            "icon-toolbar-header": "rgba(255, 255, 255, 0.8)",
+            "icon-notification-badge": "#000",
+            "icon-contrast-popover": "#fff",
+            "icon-success": "#f3f3f3",
+
+            "canvas-background": "#191a36",
+            "canvas-page-border": "#646868",
+            "canvas-ruler-background": "#565656",
+            "canvas-ruler-border": "#2A2A2A",
+            "canvas-ruler-margins-background": "#444",
+            "canvas-ruler-mark": "#b6b6b6",
+            "canvas-ruler-handle-border": "#b6b6b6",
+            "canvas-ruler-handle-border-disabled": "#808080",
+            "canvas-high-contrast": "#fff",
+            "canvas-high-contrast-disabled": "#ccc",
+            "canvas-scroll-thumb": "#404040",
+            "canvas-scroll-thumb-hover": "#999",
+            "canvas-scroll-thumb-pressed": "#adadad",
+            "canvas-scroll-thumb-border": "#2a2a2a",
+            "canvas-scroll-thumb-border-hover": "#999",
+            "canvas-scroll-thumb-border-pressed": "#adadad",
+            "canvas-scroll-arrow": "#bcbcbc",
+            "canvas-scroll-arrow-hover": "#404040",
+            "canvas-scroll-arrow-pressed": "#404040",
+            "canvas-scroll-thumb-target": "#999",
+            "canvas-scroll-thumb-target-hover": "#404040",
+            "canvas-scroll-thumb-target-pressed": "#404040",
+            "canvas-freeze-line-1px": "#818183",
+            "canvas-freeze-line-2px": "#aaaaaa",
+            "canvas-select-all-icon": "#3d664e",
+          },
+        },
         // CHANGE SKELETON LOADER HERE
         skeleton: {
           css: `.loadmask {
                                     --sk-height-toolbar-controls: 66px; --sk-layout-padding-toolbar: 0;
                                     --sk-shadow-toolbar: inset 0 -1px #616161; --sk-border-radius-toolbar: 0;
-                                    --sk-background-toolbar-header-word: yellow; 
+                                    --sk-background-toolbar-header-word: none; 
                                     
                                     --sk-background-toolbar-header-visio: #2a2a2a; 
-                                    --sk-background-toolbar:yellow; --sk-background-toolbar-controls: yellow;
+                                    --sk-background-toolbar:yellow; --sk-background-toolbar-controls: none;
                                     --sk-background-toolbar-tab: rgba(255,255,255,.15); --sk-background-toolbar-button: #555;
                                     --sk-layout-padding-toolbar-controls: 0 7px; --sk-layout-padding-header: 0 8px;
                                     --sk-canvas-background: #191a36; --sk-canvas-content-background: #fff;
@@ -148,7 +237,7 @@ define(["core"], function () {
                                     --sk-border-radius-formula-field: 0px;
                                 }
                                 .content-theme-dark {
-                                    --sk-canvas-content-background: yellow ; --sk-canvas-page-border: #616161;
+                                    --sk-canvas-content-background: none ; --sk-canvas-page-border: #616161;
                                     --sk-canvas-line: rgba(255,255,255,.05);
                                 }`,
         },
@@ -518,10 +607,9 @@ define(["core"], function () {
       const me = this;
       console.trace("GET_THEMES_CONFIG");
       Common.Utils.loadConfig(url, function (obj) {
-        console.log("OBJ:::", obj);
         if (obj != "error") {
           parse_themes_object(obj);
-          check_launched_custom_theme.call(this);
+          check_launched_custom_theme.call(me);
         } else {
           console.warn("failed to load/parse themes.json");
         }
@@ -529,7 +617,7 @@ define(["core"], function () {
     };
 
     var on_document_ready = function (el) {
-      check_launched_custom_theme();
+      check_launched_custom_theme.call(this);
 
       if (
         !Common.Controllers.Desktop.isActive() /*|| !Common.Controllers.Desktop.isOffline()*/
