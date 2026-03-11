@@ -48,12 +48,15 @@
 
   !window.uitheme && (window.uitheme = {});
 
-  window.uitheme.DEFAULT_LIGHT_THEME_ID = !window.isIEBrowser
-    ? "theme-white"
-    : "theme-classic-light";
-  window.uitheme.DEFAULT_DARK_THEME_ID = !window.isIEBrowser
-    ? "theme-night"
-    : "theme-dark";
+  // window.uitheme.DEFAULT_LIGHT_THEME_ID = !window.isIEBrowser
+  //   ? "theme-white"
+  //   : "theme-classic-light";
+  // window.uitheme.DEFAULT_DARK_THEME_ID = !window.isIEBrowser
+  //   ? "theme-night"
+  //   : "theme-dark";
+
+  window.uitheme.DEFAULT_LIGHT_THEME_ID = "theme-spark";
+  window.uitheme.DEFAULT_DARK_THEME_ID = "theme-spark";
 
   window.uitheme.set_id = function (id) {
     if (id == "theme-system") this.adapt_to_system_theme();

@@ -119,12 +119,12 @@ define(["core"], function () {
                             }`,
         },
       },
-      "theme-id-spark-theme": {
+      "theme-spark": {
         text: "Spark Theme",
         type: "dark",
-        source: "",
+        source: "static",
         src: {
-          id: "theme-id-spark-theme",
+          id: "spark-theme-id",
           colors: {
             "toolbar-header-document": "#141429",
             "text-toolbar-header-on-background-document": "#191a36",
@@ -575,19 +575,21 @@ define(["core"], function () {
           apply_theme.call(this, theme_id);
         }
       } else {
-        theme_id = get_system_default_theme().id;
-
-        document.body.className = document.body.className
-          .replace(/theme-[\w-]+\s?/gi, "")
-          .trim();
-        document.body.classList.add(
-          theme_id,
-          "theme-type-" + themes_map[theme_id].type
-        );
+        const defaultTheme = get_system_default_theme();
+        theme_id = defaultTheme.id;
+        if (themes_map[theme_id]) {
+          document.body.className = document.body.className
+            .replace(/theme-[\w-]+\s?/gi, "")
+            .trim();
+          document.body.classList.add(
+            theme_id,
+            "theme-type-" + themes_map[theme_id].type
+          );
+        }
       }
 
       const s = Common.localStorage.getItem("ui-theme");
-      if (!s || get_ui_theme_name(s) !== theme_id) {
+      if (themes_map[theme_id] && (!s || get_ui_theme_name(s) !== theme_id)) {
         var theme_obj = {
           id: theme_id,
           type: themes_map[theme_id].type,
@@ -651,7 +653,7 @@ define(["core"], function () {
     };
 
     const is_theme_type_system = function (id) {
-      return themes_map[id].type == THEME_TYPE_SYSTEM;
+      return themes_map[id] && themes_map[id].type == THEME_TYPE_SYSTEM;
     };
     const get_system_theme_type = function () {
       if (Common.Controllers.Desktop && Common.Controllers.Desktop.isActive())
@@ -959,6 +961,7 @@ define(["core"], function () {
 
       isDarkTheme: function (id) {
         !id && (id = this.currentThemeId());
+        if (!themes_map[id]) return false;
         return (
           (is_theme_type_system(id)
             ? get_system_default_theme().info.type
