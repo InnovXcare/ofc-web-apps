@@ -1,9 +1,9 @@
 {
-  "defaultTheme": "theme-id-spark-theme",
+  "defaultTheme": "spark-theme-id",
   "themes": [
     {
       "name": "Spark Theme",
-      "id": "theme-id-spark-theme",
+      "id": "spark-theme-id",
       "type": "dark",
       "colors": {
         "toolbar-header-document": "#141429",

@@ -4,7 +4,7 @@
     "fr": "Thème complètement sombre",
     "de": "Volledig donker thema"
   },
-  "id": "theme-id-spark-theme",
+  "id": "spark-theme-id",
   "type": "dark",
   "colors": {
     "toolbar-header-document": "#141429",
