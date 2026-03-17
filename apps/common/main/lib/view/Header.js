@@ -145,29 +145,29 @@ define([
             var templateTitleBox = '<section id="box-document-title">' +
                                 '<div class="extra"></div>' +
                                 '<div class="hedset" role="menubar" aria-label="<%= scope.ariaQuickAccessToolbar %>">' +
-                                    '<div class="btn-slot" id="slot-btn-dt-home"></div>' +
-                                    '<div class="btn-slot" id="slot-btn-dt-save" data-layout-name="header-save"></div>' +
-                                    '<div class="btn-slot" id="slot-btn-dt-print"></div>' +
-                                    '<div class="btn-slot" id="slot-btn-dt-print-quick"></div>' +
+                                    // '<div class="btn-slot" id="slot-btn-dt-home"></div>' +
+                                    // '<div class="btn-slot" id="slot-btn-dt-save" data-layout-name="header-save"></div>' +
+                                    // '<div class="btn-slot" id="slot-btn-dt-print"></div>' +
+                                    // '<div class="btn-slot" id="slot-btn-dt-print-quick"></div>' +
                                     '<div class="btn-slot" id="slot-btn-dt-undo"></div>' +
                                     '<div class="btn-slot" id="slot-btn-dt-redo"></div>' +
                                     '<div class="btn-slot" id="slot-btn-dt-start-over"></div>' +    
-                                    '<div class="btn-slot" id="slot-btn-dt-quick-access"></div>' +
+                                    // '<div class="btn-slot" id="slot-btn-dt-quick-access"></div>' +
                                 '</div>' +
-                                '<div class="lr-separator" id="id-box-doc-name">' +
-                                    // '<label id="title-doc-name" /></label>' +
-                                    '<input id="title-doc-name" autofill="off" autocomplete="off"/></input>' +
-                                '</div>' +
+                                // '<div class="lr-separator" id="id-box-doc-name">' +
+                                //     // '<label id="title-doc-name" /></label>' +
+                                //     '<input id="title-doc-name" autofill="off" autocomplete="off"/></input>' +
+                                // '</div>' +
                                 '<div class="hedset">' +
-                                    '<div class="btn-slot" data-layout-name="header-user">' +
-                                        '<button type="button" class="btn btn-header slot-btn-user-name hidden">' +
-                                            '<div class="color-user-name"></div>' +
-                                        '</button>' +
-                                        '<div class="btn-current-user hidden">' +
-                                            '<div class="color-user-name"></div>' +
-                                        '</div>' +
-                                    '</div>' +
-                                    '<div class="btn-slot" id="slot-btn-close"></div>' +
+                                    // '<div class="btn-slot" data-layout-name="header-user">' +
+                                    //     '<button type="button" class="btn btn-header slot-btn-user-name hidden">' +
+                                    //         '<div class="color-user-name"></div>' +
+                                    //     '</button>' +
+                                    //     '<div class="btn-current-user hidden">' +
+                                    //         '<div class="color-user-name"></div>' +
+                                    //     '</div>' +
+                                    // '</div>' +
+                                    // '<div class="btn-slot" id="slot-btn-close"></div>' +
                                 '</div>' +
                             '</section>';
 
@@ -234,7 +234,8 @@ define([
             config = config || appConfig;
             if ( $labelDocName && config) {
                 var $parent = $labelDocName.parent();
-                if (!config.twoLevelHeader) {
+                // Commented out: getPosition($parent) can be undefined when layout changed (e.g. left menu removed), causes "Cannot read properties of undefined (reading 'left')"
+                /* if (!config.twoLevelHeader) {
                     var _left_width = Common.Utils.getPosition($parent).left,
                         _right_width = $parent.next().outerWidth();
                     $parent.css('padding-left', _left_width < _right_width ? Math.max(2, _right_width - _left_width) : 2);
@@ -252,7 +253,7 @@ define([
                         $parent.css('padding-left', _left_width < _right_width ? Math.max(2, Math.min(_right_width - _left_width + 2, $parent.outerWidth() - 2 - cssWidth)) : 2);
                         $parent.css('padding-right', _left_width < _right_width ? 2 : Math.max(2, Math.min(_left_width - _right_width + 2, $parent.outerWidth() - 2 - cssWidth)));
                     }
-                }
+                } */
 
                 if (!(config.customization && config.customization.toolbarHideFileName) && (!config.twoLevelHeader || config.compactHeader)) {
                     var basis = parseFloat($parent.css('padding-left') || 0) + parseFloat($parent.css('padding-right') || 0) + parseInt($labelDocName.css('min-width') || 50); // 2px - box-shadow
