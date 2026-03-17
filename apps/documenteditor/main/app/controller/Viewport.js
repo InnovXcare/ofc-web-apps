@@ -237,7 +237,8 @@ define([
                 break;
             case 'leftmenu':
                 var panel = this.viewport.hlayout.getItem('left');
-                if (panel.resize.el) {
+                // Left menu disabled: guard so no error when panel missing (original logic below)
+                if (panel && panel.resize && panel.resize.el) {
                     if (panel.el.width() > 40) {
                         this.boxSdk.css('border-left', '');
                         panel.resize.el.show();
@@ -246,6 +247,7 @@ define([
                         this.boxSdk.css('border-left', '0 none');
                     }
                 }
+                // if (panel.resize.el) { ... }  // original: no panel guard
                 this.viewport.hlayout.doLayout();
                 break;
             case 'header':

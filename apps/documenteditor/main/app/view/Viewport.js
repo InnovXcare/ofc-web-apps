@@ -103,6 +103,26 @@ define([
 
             $container = $('#viewport-hbox-layout', this.$el);
             var items = $container.find(' > .layout-item');
+            // Left menu disabled: layout uses 3 items [editor, right-menu, history]; original 4-item layout commented below
+            let iarray = [{ // history versions
+                el: items[2],
+                rely: true,
+                alias: 'history',
+                resize: {
+                    hidden: true,
+                    autohide: false,
+                    min: 300,
+                    max: 600
+                }
+            }, { // sdk
+                el: items[0],
+                stretch: true
+            }, { // right menu
+                el: $(items[1]).hide(),
+                rely: true
+            }
+            ];
+            /* original with left menu (items: left=0, editor=1, right=2, history=3)
             let iarray = [{ // left menu chat & comment
                 el: items[0],
                 rely: true,
@@ -130,15 +150,23 @@ define([
                 rely: true
             }
             ];
+            */
 
             if ( Common.UI.isRTL() ) {
                 iarray[0].resize.min = -600;
                 iarray[0].resize.max = -300;
-                [iarray[1].resize.min, iarray[1].resize.max] = [-600, -300];
 
+                [iarray[0], iarray[2]] = [iarray[2], iarray[0]];
+            }
+            /* original RTL with left menu
+            if ( Common.UI.isRTL() ) {
+                iarray[0].resize.min = -600;
+                iarray[0].resize.max = -300;
+                [iarray[1].resize.min, iarray[1].resize.max] = [-600, -300];
                 [iarray[0], iarray[3]] = [iarray[3], iarray[0]];
                 [iarray[1], iarray[2]] = [iarray[2], iarray[1]];
             }
+            */
 
             this.hlayout = new Common.UI.HBoxLayout({
                 box: $container,
@@ -163,9 +191,10 @@ define([
             if ( Common.localStorage.getBool('de-hidden-status') )
                 DE.getController('Statusbar').getView('Statusbar').setVisible(false);
 
-            var value = Common.UI.LayoutManager.getInitValue('leftMenu');
-            value = (value!==undefined) ? !value : false;
-            Common.localStorage.getBool("de-hidden-leftmenu", value) && DE.getController('LeftMenu').getView('LeftMenu').hide();
+            // Left menu disabled (original below - uncomment to restore)
+            // var value = Common.UI.LayoutManager.getInitValue('leftMenu');
+            // value = (value!==undefined) ? !value : false;
+            // Common.localStorage.getBool("de-hidden-leftmenu", value) && DE.getController('LeftMenu').getView('LeftMenu').hide();
         },
 
         setMode: function(mode) {
