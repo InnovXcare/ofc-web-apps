@@ -11,8 +11,10 @@
     <div class="status-group">
         <div id="slot-status-btn-info" style="display: inline-block;"></div>
     </div>
-    <div class="status-group" style="width:100%; text-align:center;">
+     <div class="status-group" style="width:100%; text-align:center;">
+         <!--  Not in use not 
         <label id="label-action" class="status-label" data-layout-name="statusBar-actionStatus"></label>
+         -->
     </div>
     <div class="status-group cnt-flex-center" style="flex-shrink:0;">
         <div class="separator short el-edit"></div>
@@ -21,8 +23,10 @@
         <div class="separator short el-edit space"></div>
         <span id="btn-doc-spell" class="el-edit"></span>
         <div class="separator short el-edit el-lang"></div>
+        <!-- Not in use not 
         <div id="btn-doc-review" class="el-edit el-review" style="display: inline-block;"></div>
         <div class="separator short el-edit el-review"></div>
+        -->
         <div class="separator short hide-select-tools"></div>
         <button id="status-btn-select-tool" type="button" class="btn small btn-toolbar hide-select-tools" data-hint="0" data-hint-direction="top" data-hint-offset="small"><i class="icon toolbar__icon btn-select-tool">&nbsp;</i></button>
         <button id="status-btn-hand-tool" type="button" class="btn small btn-toolbar hide-select-tools" data-hint="0" data-hint-direction="top" data-hint-offset="small"><i class="icon toolbar__icon btn-hand-tool">&nbsp;</i></button>

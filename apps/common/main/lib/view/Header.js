@@ -97,9 +97,9 @@ define([
                                     '<div class="btn-slot" id="slot-hbtn-print-quick"></div>' +
                                     '<div class="btn-slot" id="slot-hbtn-download"></div>' +
                                 '</div>' +
-                                '<div class="hedset" data-layout-name="header-editMode">' +
-                                    '<div class="btn-slot" id="slot-btn-edit-mode"></div>' +
-                                '</div>' +
+                                // '<div class="hedset" data-layout-name="header-editMode">' +
+                                //     '<div class="btn-slot" id="slot-btn-edit-mode"></div>' +
+                                // '</div>' +
                                 '<div class="hedset" data-layout-name="header-users">' +
                                     // '<span class="btn-slot text" id="slot-btn-users"></span>' +
                                     '<section id="tlb-box-users" class="box-cousers dropdown">' +
