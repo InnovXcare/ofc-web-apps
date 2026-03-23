@@ -3850,12 +3850,14 @@ define([
 
             me.toolbar.render(_.extend({isCompactView: editmode ? compactview : true}, config));
 
-            var tab = {action: 'review', caption: me.toolbar.textTabCollaboration, dataHintTitle: 'U', layoutname: 'toolbar-collaboration'};
-            var $panel = me.application.getController('Common.Controllers.ReviewChanges').createToolbarPanel();
-            if ( $panel ) {
-                me.toolbar.addTab(tab, $panel, 6);
-                me.toolbar.setVisible('review', (config.isEdit || config.canCoAuthoring && config.canComments) && Common.UI.LayoutManager.isElementVisible('toolbar-collaboration') ); // use config.canViewReview in review controller. set visible review tab in view mode only when asc_HaveRevisionsChanges
-            }
+            var tab, $panel;
+            // toolbar-collaboration disabled (Not in use now )
+            // tab = {action: 'review', caption: me.toolbar.textTabCollaboration, dataHintTitle: 'U', layoutname: 'toolbar-collaboration'};
+            // $panel = me.application.getController('Common.Controllers.ReviewChanges').createToolbarPanel();
+            // if ( $panel ) {
+            //     me.toolbar.addTab(tab, $panel, 6);
+            //     me.toolbar.setVisible('review', (config.isEdit || config.canCoAuthoring && config.canComments) && Common.UI.LayoutManager.isElementVisible('toolbar-collaboration') ); // use config.canViewReview in review controller. set visible review tab in view mode only when asc_HaveRevisionsChanges
+            // }
 
             if ( config.isEdit ) {
                 me.toolbar.setMode(config);
@@ -3884,7 +3886,7 @@ define([
                 //         if ($panel) me.toolbar.addTab(tab, $panel, 6);
                 //     }
                 // }
-                // Draw tab disabled (commented, not removed)
+                // Draw tab disabled (Not in use now )
                 // var drawtab = application.getController('Common.Controllers.Draw');
                 // drawtab.setApi(me.api).setMode(config);
                 // $panel = drawtab.createToolbarPanel();
