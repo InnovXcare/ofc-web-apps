@@ -3898,18 +3898,19 @@ define([
                 //     Array.prototype.push.apply(me.toolbar.paragraphControls, drawtab.getView().getButtons());
                 // }
 
-                if ( config.canProtect ) {
-                    tab = {action: 'protect', caption: me.toolbar.textTabProtect, layoutname: 'toolbar-protect', dataHintTitle: 'T'};
-                    $panel = application.getController('Common.Controllers.Protection').createToolbarPanel();
-                    if ($panel) {
-                        (config.isSignatureSupport || config.isPasswordSupport) && $panel.append($('<div class="separator long"></div>'));
-                        var doctab = application.getController('DocProtection');
-                        $panel.append(doctab.createToolbarPanel());
-                        me.toolbar.addTab(tab, $panel, 7);
-                        me.toolbar.setVisible('protect', Common.UI.LayoutManager.isElementVisible('toolbar-protect'));
-                        Array.prototype.push.apply(me.toolbar.lockControls, doctab.getView('DocProtection').getButtons());
-                    }
-                }
+                // toolbar-protect disabled (commented, not removed)
+                // if ( config.canProtect ) {
+                //     tab = {action: 'protect', caption: me.toolbar.textTabProtect, layoutname: 'toolbar-protect', dataHintTitle: 'T'};
+                //     $panel = application.getController('Common.Controllers.Protection').createToolbarPanel();
+                //     if ($panel) {
+                //         (config.isSignatureSupport || config.isPasswordSupport) && $panel.append($('<div class="separator long"></div>'));
+                //         var doctab = application.getController('DocProtection');
+                //         $panel.append(doctab.createToolbarPanel());
+                //         me.toolbar.addTab(tab, $panel, 7);
+                //         me.toolbar.setVisible('protect', Common.UI.LayoutManager.isElementVisible('toolbar-protect'));
+                //         Array.prototype.push.apply(me.toolbar.lockControls, doctab.getView('DocProtection').getButtons());
+                //     }
+                // }
 
                 var links = application.getController('Links');
                 links.setApi(me.api).setConfig({toolbar: me});
