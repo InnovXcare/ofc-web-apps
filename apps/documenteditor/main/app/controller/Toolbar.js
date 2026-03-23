@@ -3850,12 +3850,14 @@ define([
 
             me.toolbar.render(_.extend({isCompactView: editmode ? compactview : true}, config));
 
-            var tab = {action: 'review', caption: me.toolbar.textTabCollaboration, dataHintTitle: 'U', layoutname: 'toolbar-collaboration'};
-            var $panel = me.application.getController('Common.Controllers.ReviewChanges').createToolbarPanel();
-            if ( $panel ) {
-                me.toolbar.addTab(tab, $panel, 6);
-                me.toolbar.setVisible('review', (config.isEdit || config.canCoAuthoring && config.canComments) && Common.UI.LayoutManager.isElementVisible('toolbar-collaboration') ); // use config.canViewReview in review controller. set visible review tab in view mode only when asc_HaveRevisionsChanges
-            }
+            var tab, $panel;
+            // toolbar-collaboration disabled (Not in use now )
+            // tab = {action: 'review', caption: me.toolbar.textTabCollaboration, dataHintTitle: 'U', layoutname: 'toolbar-collaboration'};
+            // $panel = me.application.getController('Common.Controllers.ReviewChanges').createToolbarPanel();
+            // if ( $panel ) {
+            //     me.toolbar.addTab(tab, $panel, 6);
+            //     me.toolbar.setVisible('review', (config.isEdit || config.canCoAuthoring && config.canComments) && Common.UI.LayoutManager.isElementVisible('toolbar-collaboration') ); // use config.canViewReview in review controller. set visible review tab in view mode only when asc_HaveRevisionsChanges
+            // }
 
             if ( config.isEdit ) {
                 me.toolbar.setMode(config);
@@ -3884,29 +3886,31 @@ define([
                 //         if ($panel) me.toolbar.addTab(tab, $panel, 6);
                 //     }
                 // }
-                var drawtab = application.getController('Common.Controllers.Draw');
-                drawtab.setApi(me.api).setMode(config);
-                $panel = drawtab.createToolbarPanel();
-                if ($panel) {
-                    tab = {action: 'draw', caption: me.toolbar.textTabDraw, extcls: 'canedit', layoutname: 'toolbar-draw', dataHintTitle: 'C'};
-                    me.toolbar.addTab(tab, $panel, 2);
-                    me.toolbar.setVisible('draw', Common.UI.LayoutManager.isElementVisible('toolbar-draw'));
-                    Array.prototype.push.apply(me.toolbar.lockControls, drawtab.getView().getButtons());
-                    Array.prototype.push.apply(me.toolbar.paragraphControls, drawtab.getView().getButtons());
-                }
+                // Draw tab disabled (Not in use now )
+                // var drawtab = application.getController('Common.Controllers.Draw');
+                // drawtab.setApi(me.api).setMode(config);
+                // $panel = drawtab.createToolbarPanel();
+                // if ($panel) {
+                //     tab = {action: 'draw', caption: me.toolbar.textTabDraw, extcls: 'canedit', layoutname: 'toolbar-draw', dataHintTitle: 'C'};
+                //     me.toolbar.addTab(tab, $panel, 2);
+                //     me.toolbar.setVisible('draw', Common.UI.LayoutManager.isElementVisible('toolbar-draw'));
+                //     Array.prototype.push.apply(me.toolbar.lockControls, drawtab.getView().getButtons());
+                //     Array.prototype.push.apply(me.toolbar.paragraphControls, drawtab.getView().getButtons());
+                // }
 
-                if ( config.canProtect ) {
-                    tab = {action: 'protect', caption: me.toolbar.textTabProtect, layoutname: 'toolbar-protect', dataHintTitle: 'T'};
-                    $panel = application.getController('Common.Controllers.Protection').createToolbarPanel();
-                    if ($panel) {
-                        (config.isSignatureSupport || config.isPasswordSupport) && $panel.append($('<div class="separator long"></div>'));
-                        var doctab = application.getController('DocProtection');
-                        $panel.append(doctab.createToolbarPanel());
-                        me.toolbar.addTab(tab, $panel, 7);
-                        me.toolbar.setVisible('protect', Common.UI.LayoutManager.isElementVisible('toolbar-protect'));
-                        Array.prototype.push.apply(me.toolbar.lockControls, doctab.getView('DocProtection').getButtons());
-                    }
-                }
+                // toolbar-protect disabled (Not in use now)
+                // if ( config.canProtect ) {
+                //     tab = {action: 'protect', caption: me.toolbar.textTabProtect, layoutname: 'toolbar-protect', dataHintTitle: 'T'};
+                //     $panel = application.getController('Common.Controllers.Protection').createToolbarPanel();
+                //     if ($panel) {
+                //         (config.isSignatureSupport || config.isPasswordSupport) && $panel.append($('<div class="separator long"></div>'));
+                //         var doctab = application.getController('DocProtection');
+                //         $panel.append(doctab.createToolbarPanel());
+                //         me.toolbar.addTab(tab, $panel, 7);
+                //         me.toolbar.setVisible('protect', Common.UI.LayoutManager.isElementVisible('toolbar-protect'));
+                //         Array.prototype.push.apply(me.toolbar.lockControls, doctab.getView('DocProtection').getButtons());
+                //     }
+                // }
 
                 var links = application.getController('Links');
                 links.setApi(me.api).setConfig({toolbar: me});

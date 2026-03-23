@@ -86,9 +86,9 @@ define([
                 '</div>' +
             '</div>' +
             '<div class="group small">' +
-                '<div class="elset">' +
-                    '<span class="btn-slot text" id="slot-chk-leftmenu"></span>' +
-                '</div>' +
+                // '<div class="elset">' +
+                //     '<span class="btn-slot text" id="slot-chk-leftmenu"></span>' +
+                // '</div>' +
                 '<div class="elset">' +
                     '<span class="btn-slot text" id="slot-chk-rightmenu"></span>' +
                 '</div>' +
@@ -101,9 +101,9 @@ define([
                 '<div class="elset"></div>' +
             '</div>' +
             '<div class="separator long"></div>' +
-            '<div class="group">' +
-                '<span class="btn-slot text x-huge" id="slot-btn-macros"></span>' +
-            '</div>' +
+            // '<div class="group">' +
+            //     '<span class="btn-slot text x-huge" id="slot-btn-macros"></span>' +
+            // '</div>' +
         '</section>';
 
         return {
@@ -133,9 +133,12 @@ define([
                 me.chRulers.on('change', _.bind(function (checkbox, state) {
                     me.fireEvent('rulers:change', [me.chRulers, state === 'checked']);
                 }, me));
-                me.chLeftMenu.on('change', _.bind(function (checkbox, state) {
-                    me.fireEvent('leftmenu:hide', [me.chLeftMenu, state === 'checked']);
-                }, me));
+                // Left panel slot (#slot-chk-leftmenu) may be commented in template — only bind if rendered
+                if (me.chLeftMenu.cmpEl) {
+                    me.chLeftMenu.on('change', _.bind(function (checkbox, state) {
+                        me.fireEvent('leftmenu:hide', [me.chLeftMenu, state === 'checked']);
+                    }, me));
+                }
                 me.chRightMenu.on('change', _.bind(function (checkbox, state) {
                     me.fireEvent('rightmenu:hide', [me.chRightMenu, state === 'checked']);
                 }, me));
@@ -370,8 +373,16 @@ define([
                 this.chStatusbar.render($host.find('#slot-chk-statusbar'));
                 this.chToolbar.render($host.find('#slot-chk-toolbar'));
                 this.chRulers.render($host.find('#slot-chk-rulers'));
-                this.btnMacros && this.btnMacros.render($host.find('#slot-btn-macros'));
-                this.chLeftMenu.render($host.find('#slot-chk-leftmenu'));
+                // Macros slot (#slot-btn-macros) may be commented in template
+                // this.btnMacros && this.btnMacros.render($host.find('#slot-btn-macros'));
+                if (this.btnMacros && $host.find('#slot-btn-macros').length) {
+                    this.btnMacros.render($host.find('#slot-btn-macros'));
+                }
+                // Left menu checkbox slot (#slot-chk-leftmenu) may be commented in template
+                // this.chLeftMenu.render($host.find('#slot-chk-leftmenu'));
+                if ($host.find('#slot-chk-leftmenu').length) {
+                    this.chLeftMenu.render($host.find('#slot-chk-leftmenu'));
+                }
                 this.chRightMenu.render($host.find('#slot-chk-rightmenu'));
                 this.btnSelectTool && this.btnSelectTool.render($host.find('#slot-btn-select-tool-view'));
                 this.btnHandTool && this.btnHandTool.render($host.find('#slot-btn-hand-tool-view'));
@@ -406,9 +417,12 @@ define([
                 });
                 this.btnMacros && this.btnMacros.updateHint(this.tipMacros);
 
-                var value = Common.UI.LayoutManager.getInitValue('leftMenu');
-                value = (value!==undefined) ? !value : false;
-                this.chLeftMenu.setValue(!Common.localStorage.getBool("de-hidden-leftmenu", value));
+                // Left panel checkbox — skip if slot removed from template (see getPanel)
+                if (this.chLeftMenu.cmpEl) {
+                    var value = Common.UI.LayoutManager.getInitValue('leftMenu');
+                    value = (value!==undefined) ? !value : false;
+                    this.chLeftMenu.setValue(!Common.localStorage.getBool("de-hidden-leftmenu", value));
+                }
 
                 value = Common.UI.LayoutManager.getInitValue('rightMenu');
                 value = (value!==undefined) ? !value : false;

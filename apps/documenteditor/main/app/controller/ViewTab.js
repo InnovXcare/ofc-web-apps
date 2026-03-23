@@ -103,7 +103,9 @@ define([
                 },
                 'LeftMenu': {
                     'view:hide': _.bind(function (leftmenu, state) {
-                        this.view.chLeftMenu.setValue(!state, true);
+                        // Skip if #slot-chk-leftmenu removed from ViewTab template (chLeftMenu not rendered)
+                        if (this.view.chLeftMenu && this.view.chLeftMenu.cmpEl)
+                            this.view.chLeftMenu.setValue(!state, true);
                     }, this)
                 },
                 'RightMenu': {
@@ -149,12 +151,15 @@ define([
                         me.view.chStatusbar.$el.remove();
                     }
 
-                    if (config.canBrandingExt && config.customization && config.customization.leftMenu === false || !Common.UI.LayoutManager.isElementVisible('leftMenu')) {
-                        emptyGroup.push(me.view.chLeftMenu.$el.closest('.elset'));
-                        me.view.chLeftMenu.$el.remove();
-                    } else if (emptyGroup.length>0) {
-                        emptyGroup.push(me.view.chLeftMenu.$el.closest('.elset'));
-                        emptyGroup.shift().append(me.view.chLeftMenu.$el[0]);
+                    // Left menu checkbox — guard when #slot-chk-leftmenu commented out (no $el)
+                    if (me.view.chLeftMenu.$el && me.view.chLeftMenu.$el.length) {
+                        if (config.canBrandingExt && config.customization && config.customization.leftMenu === false || !Common.UI.LayoutManager.isElementVisible('leftMenu')) {
+                            emptyGroup.push(me.view.chLeftMenu.$el.closest('.elset'));
+                            me.view.chLeftMenu.$el.remove();
+                        } else if (emptyGroup.length>0) {
+                            emptyGroup.push(me.view.chLeftMenu.$el.closest('.elset'));
+                            emptyGroup.shift().append(me.view.chLeftMenu.$el[0]);
+                        }
                     }
 
                     if (!config.isEdit || config.canBrandingExt && config.customization && config.customization.rightMenu === false || !Common.UI.LayoutManager.isElementVisible('rightMenu')) {
@@ -175,8 +180,13 @@ define([
                         me.view.$el.find('.separator-rulers').remove();
                     }
 
+                    // Macros group — only remove DOM if #slot-btn-macros exists (slot may be commented in template)
                     if (!config.isEdit || config.customization && config.customization.macros===false) {
-                        me.view.$el.find('#slot-btn-macros').closest('.group').prev().addBack().remove();
+                        var $slotMacros = me.view.$el.find('#slot-btn-macros');
+                        if ($slotMacros.length) {
+                            // me.view.$el.find('#slot-btn-macros').closest('.group').prev().addBack().remove();
+                            $slotMacros.closest('.group').prev().addBack().remove();
+                        }
                     }
 
                     me.view.cmbsZoom.forEach(function (cmb) {
