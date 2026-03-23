@@ -3898,7 +3898,7 @@ define([
                 //     Array.prototype.push.apply(me.toolbar.paragraphControls, drawtab.getView().getButtons());
                 // }
 
-                // toolbar-protect disabled (commented, not removed)
+                // toolbar-protect disabled (Not in use now)
                 // if ( config.canProtect ) {
                 //     tab = {action: 'protect', caption: me.toolbar.textTabProtect, layoutname: 'toolbar-protect', dataHintTitle: 'T'};
                 //     $panel = application.getController('Common.Controllers.Protection').createToolbarPanel();

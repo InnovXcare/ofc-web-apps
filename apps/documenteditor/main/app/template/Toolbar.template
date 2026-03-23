@@ -101,13 +101,17 @@
                 <div class="separator long"></div>
                 <div class="group">
                     <span class="btn-slot text x-huge" id="slot-btn-insimage"></span>
+                    <!-- Not in use Now shapes , smartart and chart
                     <span class="btn-slot text x-huge" id="slot-btn-insshape"></span>
                     <span class="btn-slot text x-huge" id="slot-btn-inssmartart"></span>
                     <span class="btn-slot text x-huge" id="slot-btn-inschart"></span>
+                    -->
                 </div>
                 <div class="separator long"></div>
                 <div class="group">
+                   <!-- Not in use Now comment
                     <span class="btn-slot text x-huge slot-comment"></span>
+                    -->
                     <span class="btn-slot text x-huge slot-inshyperlink"></span>
                 </div>
                 <div class="separator long"></div>
@@ -120,8 +124,10 @@
                     <span class="btn-slot text x-huge" id="slot-btn-instextart"></span>
                     <span class="btn-slot text x-huge" id="slot-btn-dropcap"></span>
                     <span class="btn-slot text x-huge" id="slot-btn-datetime"></span>
+                    <!-- Not in use now text from file and field
                     <span class="btn-slot text x-huge" id="slot-btn-text-from-file" data-layout-name="toolbar-insert-file"></span>
                     <span class="btn-slot text x-huge" id="slot-btn-insfield" data-layout-name="toolbar-insert-field"></span>
+                    -->
                 </div>
                 <div class="separator long"></div>
                 <div class="group">
