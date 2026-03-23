@@ -177,11 +177,15 @@
                     <span class="btn-slot text x-huge" id="slot-img-movebkwd"></span>
                     <span class="btn-slot text x-huge" id="slot-img-align"></span>
                     <span class="btn-slot text x-huge" id="slot-img-group"></span>
+                     <!-- Not in use now shapes and merge
                     <span class="btn-slot text x-huge" id="slot-shapes-merge"></span>
+                    -->
                 </div>
                 <div class="separator long"></div>
                 <div class="group">
+                    <!-- Not in use now watermark
                     <span class="btn-slot text x-huge" id="slot-btn-watermark"></span>
+                    -->
                     <span class="btn-slot text x-huge" id="slot-btn-pagecolor" data-layout-name="toolbar-layout-pagecolor"></span>
                 </div>
                 <div class="separator long"></div>
