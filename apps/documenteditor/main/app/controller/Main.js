@@ -616,6 +616,7 @@ define([
                 };
                 if(licenseAndDocInfo.standAloneApp){
                     this.api.asc_setLicenseoForStandalone(licenseAndDocInfo.licenseInfo);
+                    this.api.asc_set_changesJson(metaInfo?.docInfo?.data?.data?.changesJson);
                 }
                 this.api.asc_getEditorPermissions(this.editorConfig.licenseUrl, this.editorConfig.customerId);
                 if(licenseAndDocInfo.standAloneApp) {
