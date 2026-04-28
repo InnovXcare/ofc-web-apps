@@ -801,7 +801,8 @@ define([
                         menu: new Common.UI.Menu({
                             items: [
                                 {caption: this.mniImageFromFile, value: 'file'},
-                                {caption: this.mniImageFromUrl, value: 'url'},
+                                // 
+                                // {caption: this.mniImageFromUrl, value: 'url'},  // not in use now file from the URL
                                 {caption: this.mniImageFromStorage, value: 'storage'}
                             ]
                         }),
@@ -3453,7 +3454,7 @@ define([
 
                 this.listStylesAdditionalMenuItem && this.listStylesAdditionalMenuItem.setVisible(mode.canEditStyles);
                 this.btnContentControls && this.btnContentControls.menu.items[10].setVisible(mode.canEditContentControl);
-                this.mnuInsertImage && this.mnuInsertImage.items[2].setVisible(this.mode.canRequestInsertImage || this.mode.fileChoiceUrl && this.mode.fileChoiceUrl.indexOf("{documentType}")>-1);
+                this.mnuInsertImage && this.mnuInsertImage.items[1].setVisible(this.mode.canRequestInsertImage || this.mode.fileChoiceUrl && this.mode.fileChoiceUrl.indexOf("{documentType}")>-1);
             },
 
             onSendThemeColorSchemes: function (schemas) {
