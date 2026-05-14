@@ -3843,8 +3843,10 @@ define([
                 compactview = !editmode;
             if ( Common.localStorage.itemExists(editmode ? "de-compact-toolbar" : "de-view-compact-toolbar") ) {
                 compactview = Common.localStorage.getBool(editmode ? "de-compact-toolbar" : "de-view-compact-toolbar");
+            } else if (editmode) {
+                compactview = true;
             } else if (config.customization) {
-                compactview = editmode ? !!config.customization.compactToolbar : config.customization.compactToolbar!==false;
+                compactview = config.customization.compactToolbar!==false;
             }
             Common.Utils.InternalSettings.set('toolbar-active-tab', !editmode && !compactview);
 

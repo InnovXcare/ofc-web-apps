@@ -137,7 +137,7 @@ define([
                     me.api.asc_setViewerTargetType('hand');
                 }
 
-                var statusbarIsHidden = Common.localStorage.getBool("de-hidden-status");
+                var statusbarIsHidden = Common.localStorage.getBool("de-hidden-status", true);
                 if ( config.canReview && !statusbarIsHidden ) {
                     var _process_changestip = function() {
                         var showTrackChangesTip = !Common.localStorage.getBool("de-track-changes-tip");

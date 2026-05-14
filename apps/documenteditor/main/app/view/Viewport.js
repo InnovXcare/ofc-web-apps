@@ -88,7 +88,7 @@ define([
                         el: $container.find(' > .layout-item#toolbar'),
                         alias: 'toolbar',
                         // rely: true
-                        height: Common.localStorage.getBool('de-compact-toolbar') ?
+                        height: Common.localStorage.getBool('de-compact-toolbar', true) ?
                             Common.Utils.InternalSettings.get('toolbar-height-compact') : Common.Utils.InternalSettings.get('toolbar-height-normal')
                     }, {
                         el: $container.find(' > .layout-item.middle'),
@@ -182,13 +182,13 @@ define([
 
             me._rightMenu   = rightMenuView.render(this.mode);
             var value = Common.UI.LayoutManager.getInitValue('rightMenu');
-            value = (value!==undefined) ? !value : false;
+            value = (value!==undefined) ? !value : true;
             Common.localStorage.getBool("de-hidden-rightmenu", value) && me._rightMenu.hide();
             Common.Utils.InternalSettings.set("de-hidden-rightmenu", Common.localStorage.getBool("de-hidden-rightmenu", value));
         },
 
         applyCommonMode: function() {
-            if ( Common.localStorage.getBool('de-hidden-status') )
+            if ( Common.localStorage.getBool('de-hidden-status', true) )
                 DE.getController('Statusbar').getView('Statusbar').setVisible(false);
 
             // Left menu disabled (original below - uncomment to restore)
