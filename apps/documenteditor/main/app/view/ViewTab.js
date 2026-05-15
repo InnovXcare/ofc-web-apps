@@ -236,7 +236,7 @@ define([
                 this.chStatusbar = new Common.UI.CheckBox({
                     lock: [_set.lostConnect, _set.disableOnStart],
                     labelText: this.textStatusBar,
-                    value: !Common.localStorage.getBool("de-hidden-status"),
+                    value: !Common.localStorage.getBool("de-hidden-status", true),
                     dataHint: '1',
                     dataHintDirection: 'left',
                     dataHintOffset: 'small'
@@ -274,7 +274,7 @@ define([
                 this.chRulers = new Common.UI.CheckBox({
                     lock: [_set.lostConnect, _set.disableOnStart],
                     labelText: this.textRulers,
-                    value: !Common.Utils.InternalSettings.get("de-hidden-rulers"),
+                    value: !(Common.localStorage.itemExists('de-hidden-rulers') ? Common.localStorage.getBool('de-hidden-rulers') : true),
                     dataHint: '1',
                     dataHintDirection: 'left',
                     dataHintOffset: 'small'
@@ -425,7 +425,7 @@ define([
                 }
 
                 value = Common.UI.LayoutManager.getInitValue('rightMenu');
-                value = (value!==undefined) ? !value : false;
+                value = (value!==undefined) ? !value : true;
                 this.chRightMenu.setValue(!Common.localStorage.getBool("de-hidden-rightmenu", value));
 
                 if (config.isEdit || config.isRestrictedEdit) {

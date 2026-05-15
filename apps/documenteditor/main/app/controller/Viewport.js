@@ -170,8 +170,7 @@ define([
             $filemenu.css('top', Common.UI.LayoutManager.isElementVisible('toolbar') ? _intvars.get('toolbar-height-tabs') : 0);
 
             if ( !(config.isEdit || config.isRestrictedEdit && config.canFillForms && config.isFormCreator) ||
-                ( !Common.localStorage.itemExists("de-compact-toolbar") &&
-                config.customization && config.customization.compactToolbar )) {
+                !Common.localStorage.itemExists("de-compact-toolbar") ) {
 
                 var panel = me.viewport.vlayout.getItem('toolbar');
                 if ( panel ) panel.height = _intvars.get('toolbar-height-tabs');
