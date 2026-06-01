@@ -414,15 +414,15 @@ define([
                 });
             }
 
-            if ( me.logo )
-                me.logo.children(0).on('click', function (e) {
-                    var _url = !!me.branding && !!me.branding.logo && (me.branding.logo.url!==undefined) ?
-                        me.branding.logo.url : '{{PUBLISHER_URL}}';
-                    if (_url) {
-                        var newDocumentPage = window.open(_url);
-                        newDocumentPage && newDocumentPage.focus();
-                    }
-                });
+            // if ( me.logo )
+            //     me.logo.children(0).on('click', function (e) {
+            //         var _url = !!me.branding && !!me.branding.logo && (me.branding.logo.url!==undefined) ?
+            //             me.branding.logo.url : '{{PUBLISHER_URL}}';
+            //         if (_url) {
+            //             var newDocumentPage = window.open(_url);
+            //             newDocumentPage && newDocumentPage.focus();
+            //         }
+            //     });
 
             if ( $panelUsers ) {
                 onResetUsers(storeUsers);
@@ -781,9 +781,7 @@ define([
 
             el: '#header',
 
-            // Delegated events for creating new items, and clearing completed ones.
             events: {
-                // 'click #header-logo': function (e) {}
             },
 
             initialize: function (options) {
