@@ -36,9 +36,7 @@
  *
  */
 
-define([
-    'common/main/lib/component/Window'
-], function () {
+define([], function () {
     'use strict';
     Common.Views.ExternalEditor = Common.UI.Window.extend(_.extend({
         initialize : function(options) {

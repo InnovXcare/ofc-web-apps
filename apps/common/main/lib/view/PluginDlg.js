@@ -38,9 +38,7 @@ if (Common === undefined)
 
 Common.Views = Common.Views || {};
 
-define([
-    'common/main/lib/component/Window'
-], function () {
+define([], function () {
     'use strict';
 
     Common.Views.PluginDlg = Common.UI.Window.extend(_.extend({

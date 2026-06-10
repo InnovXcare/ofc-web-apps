@@ -36,9 +36,7 @@
  *
  */
 
-define([
-    'common/main/lib/component/Window'
-], function () { 'use strict';
+define([], function () { 'use strict';
 
     Common.Views.RenameDialog = Common.UI.Window.extend(_.extend({
         options: {
