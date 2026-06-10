@@ -1556,8 +1556,14 @@ define([
                 Common.Gateway.on('downloadas',             _.bind(me.onDownloadAs, me));
                 Common.Gateway.on('setfavorite',            _.bind(me.onSetFavorite, me));
                 Common.Gateway.on('requestclose',           _.bind(me.onRequestClose, me));
-                this.appOptions.canRequestSaveAs && Common.Gateway.on('internalcommand', function(data) {
-                    if (data.command == 'wopi:saveAsComplete') {
+                Common.Gateway.on('internalcommand', function (data) {
+                    // console.log("INTERNAL_COMMAND_FIRED", data,me.api);
+                    if (data && data.command === 'SET_MEDIA_URLS' && data.data && data.data.data.urls ) {
+                        // console.log("ADD_DOCUMENT_IMGS", me.api.baseEditorsApi);
+                        // const addDocumentURLS =
+                          me.api.asc_addDocumentUrls(data.data.data.urls);
+                        // addDocumentURLS(data.data.data.urls);
+                    } else if (me.appOptions.canRequestSaveAs && data.command == 'wopi:saveAsComplete') {
                         me.onExternalMessage({msg: me.txtSaveCopyAsComplete});
                     }
                 });
