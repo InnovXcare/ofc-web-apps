@@ -30,9 +30,7 @@
  *
  */
 
-define([
-    'common/main/lib/component/Window'
-], function () { 'use strict';
+define([], function () { 'use strict';
 
     Common.Views.DocumentPropertyDialog = Common.UI.Window.extend(_.extend({
         options: {

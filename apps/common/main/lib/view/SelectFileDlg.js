@@ -33,9 +33,7 @@
  * Date: 09.02.15
  */
 
-define([
-    'common/main/lib/component/Window'
-], function () { 'use strict';
+define([], function () { 'use strict';
 
     Common.Views.SelectFileDlg = Common.UI.Window.extend(_.extend({
         initialize : function(options) {
