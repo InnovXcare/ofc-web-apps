@@ -158,6 +158,7 @@ require([
             require([
                 'common/main/lib/mods/dropdown',
                 'common/main/lib/mods/tooltip',
+                'common/main/lib/component/Window',
                 'common/main/lib/util/LocalStorage',
                 'common/main/lib/controller/Scaling',
                 'common/main/lib/controller/Themes',
