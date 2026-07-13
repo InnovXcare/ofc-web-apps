@@ -118,7 +118,7 @@ define([
             });
 
             var store = this.getCollection('Common.Collections.Fonts');
-            store && store.add(fontsArray);
+            store && store.set(fontsArray, {remove: true});
 
             Common.NotificationCenter.trigger('fonts:load', store, select);
         }
@@ -133,7 +133,9 @@ define([
             views: [],
 
             initialize: function() {
-                Common.NotificationCenter.on('fonts:select', _.bind(onSelectFont, this))
+                Common.NotificationCenter.on('fonts:select', _.bind(onSelectFont, this));
+                this._boundOnApiLoadFonts = _.bind(onApiLoadFonts, this);
+                this._boundOnApiFontChange = _.bind(onApiFontChange, this);
             },
 
             onLaunch: function() {
@@ -141,9 +143,13 @@ define([
             },
 
             setApi: function(api) {
+                if (this.api) {
+                    this.api.asc_unregisterCallback('asc_onInitEditorFonts', this._boundOnApiLoadFonts);
+                    this.api.asc_unregisterCallback('asc_onFontFamily', this._boundOnApiFontChange);
+                }
                 this.api = api;
-                this.api.asc_registerCallback('asc_onInitEditorFonts',  _.bind(onApiLoadFonts, this));
-                this.api.asc_registerCallback('asc_onFontFamily',       _.bind(onApiFontChange, this));
+                this.api.asc_registerCallback('asc_onInitEditorFonts', this._boundOnApiLoadFonts);
+                this.api.asc_registerCallback('asc_onFontFamily', this._boundOnApiFontChange);
             }
         }
     })());
