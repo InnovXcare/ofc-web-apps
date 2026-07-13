@@ -648,11 +648,10 @@ define([
                     me._fontsArray = me.store.toJSON();
 
                     if (me.recent > 0) {
-                        if (!me._recentEventsBound) {
-                            me.store.on('add', me.onInsertItem, me);
-                            me.store.on('remove', me.onRemoveItem, me);
-                            me._recentEventsBound = true;
-                        }
+                        me.store.off('add', me.onInsertItem, me);
+                        me.store.off('remove', me.onRemoveItem, me);
+                        me.store.on('add', me.onInsertItem, me);
+                        me.store.on('remove', me.onRemoveItem, me);
 
                         Common.Utils.InternalSettings.set(me.appPrefix + "-settings-recent-fonts", Common.localStorage.getItem(me.appPrefix + "-settings-recent-fonts"));
                         var arr = Common.Utils.InternalSettings.get(me.appPrefix + "-settings-recent-fonts");

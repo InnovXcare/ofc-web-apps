@@ -107,13 +107,10 @@ define([
         function onApiLoadFonts(fonts, select) {
             var fontsArray = [];
             _.each(fonts, function(font){
-                var displayName = font.asc_getFontName(),
-                    internalName = font.name || displayName,
-                    fontId = font.asc_getFontId();
+                var fontId = font.asc_getFontId();
                 fontsArray.push({
-                    id          : _.isEmpty(fontId) ? ('font-' + internalName) : fontId,
-                    name        : internalName,
-                    displayName : displayName,
+                    id          : _.isEmpty(fontId) ? Common.UI.getId() : fontId,
+                    name        : font.asc_getFontName(),
                     imgidx      : font.asc_getFontThumbnail(),
                     type        : font.asc_getFontType()
                 });
