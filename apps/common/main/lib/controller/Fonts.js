@@ -118,7 +118,17 @@ define([
             });
 
             var store = this.getCollection('Common.Collections.Fonts');
-            store && store.add(fontsArray);
+            // Replace (do not append) — LoadDocumentFonts re-fires asc_onInitEditorFonts
+            // on every document/bin open and would otherwise duplicate the dropdown list.
+            if (store) {
+                store.reset(fontsArray);
+            }
+
+            // Subsequent reopens should load document fonts only (LoadDocumentFonts2)
+            // and skip sync_InitEditorFonts so the GUI list is not rebuilt.
+            if (this.api && this.api.FontLoader) {
+                this.api.FontLoader.IsLoadDocumentFonts2 = true;
+            }
 
             Common.NotificationCenter.trigger('fonts:load', store, select);
         }
