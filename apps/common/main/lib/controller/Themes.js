@@ -305,6 +305,134 @@ define(["core"], function () {
       //         cls: 'mod2',
       //     }
       // },
+      // ===== SDK theme (third-party / PAC context) =====
+      // Mirrors spark-theme-id (single dark variant, used for both the light
+      // and dark default slots). Recolor the tokens below to give the SDK/PAC
+      // context its own look; the pipeline (asc_setSkin -> skin.js GlobalSkin)
+      // applies these to both the web-apps UI and the SDK canvas.
+      "sdk-theme-id": {
+        text: "SDK Theme",
+        type: "dark",
+        source: "",
+        src: {
+          id: "sdk-theme-id",
+          colors: {
+            "toolbar-header-document": "#333333",
+            "text-toolbar-header-on-background-document": "#333333",
+
+            "background-normal": "#333333",
+            "background-toolbar": "#333333",
+            "background-toolbar-additional": "#505050",
+            "background-primary-dialog-button": "#48c0f0",
+            "background-accent-button": "#48c0f0",
+            "background-tab-underline": "#48c0f0",
+            "background-notification-popover": "#3e5968",
+            "background-notification-badge": "#48c0f0",
+            "background-scrim": "rgba(0, 0, 0, 0.6)",
+            "background-loader": "rgba(24, 24, 24, 0.9)",
+            "background-alt-key-hint": "#FFD938",
+            "background-contrast-popover": "#313131",
+            "background-fill-button": "#48c0f0",
+
+            "highlight-toolbar-tab-underline": "#48c0f0",
+            "background-accent": "#48c0f0",
+            "background-toolbar-header": "#333333",
+
+            "highlight-toolbar-tab-underline-document": "#48c0f0",
+            "highlight-button-hover": "#535C68",
+            "highlight-button-pressed": "#49617D",
+            "highlight-button-pressed-hover": "#808080",
+            "highlight-primary-dialog-button-hover": "rgba(72, 192, 240,0.85)",
+            "highlight-accent-button-hover": "rgba(72, 192, 240,0.05)",
+            "highlight-accent-button-pressed": "#89afdc",
+            "highlight-header-button-hover": "rgba(72, 192, 240,0.05)",
+            "highlight-header-button-pressed": "rgba(255, 255, 255, 0.15)",
+            "highlight-header-tab-underline-document": "#48c0f0",
+            "highlight-text-select": "#96c8fd",
+
+            "border-toolbar": "#565656",
+            "border-toolbar-active-panel-top": "#565656",
+            "border-divider": "#505050",
+            "border-regular-control": "#666",
+            "border-toolbar-button-hover": "#5a5a5a",
+            "border-preview-hover": "#757575",
+            "border-preview-select": "#48c0f0",
+            "border-control-focus": "#48c0f0",
+            "border-color-shading": "rgba(255, 255, 255, 0.1)",
+            "border-error": "#b3261e",
+            "border-contrast-popover": "#666",
+
+            "text-normal": "rgba(255, 255, 255, 0.8)",
+            "text-normal-pressed": "rgba(255, 255, 255, 0.8)",
+            "text-secondary": "black",
+            "text-tertiary": "rgba(255, 255, 255, 0.4)",
+            "text-link": "#b5e4ff",
+            "text-link-hover": "#b5e4ff",
+            "text-link-active": "#b5e4ff",
+            "text-link-visited": "#b5e4ff",
+            "text-inverse": "black",
+            "text-toolbar-header": "rgba(255, 255, 255, 0.8)",
+            "text-contrast-background": "#fff",
+            "text-alt-key-hint": "#2a2a2a",
+
+            "icon-normal": "#666666",
+            "icon-normal-pressed": "#666666",
+            "icon-inverse": "#444",
+            "icon-toolbar-header": "rgba(255, 255, 255, 0.8)",
+            "icon-notification-badge": "#000",
+            "icon-contrast-popover": "#fff",
+            "icon-success": "#f3f3f3",
+
+            "canvas-background": "#333333",
+            "canvas-page-border": "#646868",
+            "canvas-ruler-background": "#565656",
+            "canvas-ruler-border": "#2A2A2A",
+            "canvas-ruler-margins-background": "#444",
+            "canvas-ruler-mark": "#b6b6b6",
+            "canvas-ruler-handle-border": "#b6b6b6",
+            "canvas-ruler-handle-border-disabled": "#808080",
+            "canvas-high-contrast": "#fff",
+            "canvas-high-contrast-disabled": "#ccc",
+            "canvas-scroll-thumb": "#404040",
+            "canvas-scroll-thumb-hover": "#999",
+            "canvas-scroll-thumb-pressed": "#adadad",
+            "canvas-scroll-thumb-border": "#2a2a2a",
+            "canvas-scroll-thumb-border-hover": "#999",
+            "canvas-scroll-thumb-border-pressed": "#adadad",
+            "canvas-scroll-arrow": "#bcbcbc",
+            "canvas-scroll-arrow-hover": "#404040",
+            "canvas-scroll-arrow-pressed": "#404040",
+            "canvas-scroll-thumb-target": "#999",
+            "canvas-scroll-thumb-target-hover": "#404040",
+            "canvas-scroll-thumb-target-pressed": "#404040",
+            "canvas-freeze-line-1px": "#818183",
+            "canvas-freeze-line-2px": "#aaaaaa",
+            "canvas-select-all-icon": "#3d664e",
+          },
+        },
+        // CHANGE SKELETON LOADER HERE
+        skeleton: {
+          css: `.loadmask {
+                                    --sk-height-toolbar-controls: 66px; --sk-layout-padding-toolbar: 0;
+                                    --sk-shadow-toolbar: inset 0 -1px #616161; --sk-border-radius-toolbar: 0;
+                                    --sk-background-toolbar-header-word: none;
+
+                                    --sk-background-toolbar-header-visio: #2a2a2a;
+                                    --sk-background-toolbar:none; --sk-background-toolbar-controls: none;
+                                    --sk-background-toolbar-tab: rgba(255,255,255,.15); --sk-background-toolbar-button: #555;
+                                    --sk-layout-padding-toolbar-controls: 0 7px; --sk-layout-padding-header: 0 8px;
+                                    --sk-canvas-background: #191a36; --sk-canvas-content-background: #fff;
+                                    --sk-canvas-page-border: #555; --sk-canvas-line: rgba(0,0,0,.05);
+                                    --sk-height-formula: 24px; --sk-padding-formula: 0 0 4px 0;
+                                    --sk-border-style-formula: solid; --sk-gap-formula-field: 20px;
+                                    --sk-border-radius-formula-field: 0px;
+                                }
+                                .content-theme-dark {
+                                    --sk-canvas-content-background: none ; --sk-canvas-page-border: #616161;
+                                    --sk-canvas-line: rgba(255,255,255,.05);
+                                }`,
+        },
+      },
     };
 
     var name_colors = [
@@ -492,7 +620,7 @@ define(["core"], function () {
             _css_array.push("--", c + "-pdf", ":", colors[c], ";");
             _css_array.push("--", c + "-visio", ":", colors[c], ";");
             console.log(
-              "Obsolete: The 'highlight-toolbar-tab-underline' color for interface themes is deprecated. Please use 'highlight-toolbar-tab-underline-document', 'highlight-toolbar-tab-underline-presentation', etc. instead."
+              "Obsolete: The 'highlight-toolbar-tab-underline' color for interface themes is deprecated. Please use 'highlight-toolbar-tab-underline-document', 'highlight-toolbar-tab-underline-presentation', etc. instead.",
             );
           } else _css_array.push("--", c, ":", colors[c], ";");
         }
@@ -559,16 +687,16 @@ define(["core"], function () {
       if (themes_map[theme_id]) {
         if (themes_map[theme_id].source != "static") {
           const m = document.body.className.match(
-            "theme-type-" + themes_map[theme_id].type
+            "theme-type-" + themes_map[theme_id].type,
           );
           if (!m)
             document.body.classList.add(
-              "theme-type-" + themes_map[theme_id].type
+              "theme-type-" + themes_map[theme_id].type,
             );
           else if (m.length)
             document.body.className = document.body.className.replace(
               /theme-type-(?:dark|light)/i,
-              "theme-type-" + themes_map[theme_id].type
+              "theme-type-" + themes_map[theme_id].type,
             );
         }
         if (themes_map[theme_id].src && themes_map[theme_id].src.colors) {
@@ -583,7 +711,7 @@ define(["core"], function () {
             .trim();
           document.body.classList.add(
             theme_id,
-            "theme-type-" + themes_map[theme_id].type
+            "theme-type-" + themes_map[theme_id].type,
           );
         }
       }
@@ -695,11 +823,11 @@ define(["core"], function () {
         .trim();
       document.body.classList.add(
         theme_id,
-        "theme-type-" + themes_map[theme_id].type
+        "theme-type-" + themes_map[theme_id].type,
       );
 
       let icons_base_url = getComputedStyle(document.body).getPropertyValue(
-        "--sprite-button-icons-base-url"
+        "--sprite-button-icons-base-url",
       );
       if (!!themes_map[theme_id].icons) {
         if (!!themes_map[theme_id].icons.basepath)
@@ -709,7 +837,7 @@ define(["core"], function () {
 
         if (themes_map[theme_id].icons.cls)
           document.body.classList.add(
-            "theme-icons-cls-" + themes_map[theme_id].icons.cls
+            "theme-icons-cls-" + themes_map[theme_id].icons.cls,
           );
       }
 
@@ -722,7 +850,7 @@ define(["core"], function () {
           this.api.asc_setContentDarkMode(this.isContentThemeDark());
           Common.NotificationCenter.trigger(
             "contenttheme:dark",
-            this.isContentThemeDark()
+            this.isContentThemeDark(),
           );
         } else {
           this.api.asc_setContentDarkMode(false);
@@ -740,7 +868,7 @@ define(["core"], function () {
             id: id,
             colors: colors_obj,
           },
-          themes_map[id]
+          themes_map[id],
         );
         delete theme_obj.source;
 
@@ -769,7 +897,7 @@ define(["core"], function () {
           Common.NotificationCenter.trigger(
             "uitheme:changed",
             theme_id,
-            caller
+            caller,
           );
         }
       }
@@ -801,7 +929,7 @@ define(["core"], function () {
             } else if (e.key == "content-theme") {
               this.setContentTheme(e.originalEvent.newValue, true, false);
             }
-          }.bind(this)
+          }.bind(this),
         );
 
         this.api = api;
@@ -814,8 +942,8 @@ define(["core"], function () {
               themes_map[theme_id].src.id,
               create_colors_css(
                 themes_map[theme_id].src.id,
-                themes_map[theme_id].src.colors
-              )
+                themes_map[theme_id].src.colors,
+              ),
             );
           } else if (
             themes_map[theme_id].skeleton &&
@@ -824,7 +952,7 @@ define(["core"], function () {
             // Static theme with skeleton CSS
             write_theme_css(
               theme_id + "-skeleton",
-              themes_map[theme_id].skeleton.css
+              themes_map[theme_id].skeleton.css,
             );
           }
         }
@@ -835,19 +963,19 @@ define(["core"], function () {
         if (
           themes_map[theme_id] &&
           !document.body.classList.contains(
-            "theme-type-" + themes_map[theme_id].type
+            "theme-type-" + themes_map[theme_id].type,
           )
         ) {
           document.body.classList.add(
-            "theme-type-" + themes_map[theme_id].type
+            "theme-type-" + themes_map[theme_id].type,
           );
         }
         const obj = get_current_theme_colors(name_colors);
         obj.type = window.uitheme.type
           ? window.uitheme.type
           : themes_map[theme_id]
-          ? themes_map[theme_id].type
-          : THEME_TYPE_LIGHT;
+            ? themes_map[theme_id].type
+            : THEME_TYPE_LIGHT;
         obj.name = theme_id;
         api.asc_setSkin(obj);
 
@@ -896,7 +1024,7 @@ define(["core"], function () {
 
           if (themes_map[theme_id].icons.cls) {
             document.body.classList.add(
-              "theme-icons-cls-" + themes_map[theme_id].icons.cls
+              "theme-icons-cls-" + themes_map[theme_id].icons.cls,
             );
           }
         }
@@ -910,7 +1038,7 @@ define(["core"], function () {
             .addEventListener("change", on_system_theme_dark.bind(this));
         Common.NotificationCenter.on(
           "document:ready",
-          on_document_ready.bind(this)
+          on_document_ready.bind(this),
         );
       },
 
@@ -994,7 +1122,7 @@ define(["core"], function () {
         window.uitheme.iscontentdark = !window.uitheme.iscontentdark;
         Common.localStorage.setItem(
           "content-theme",
-          window.uitheme.iscontentdark ? "dark" : "light"
+          window.uitheme.iscontentdark ? "dark" : "light",
         );
 
         if (this.isDarkTheme())
@@ -1002,7 +1130,7 @@ define(["core"], function () {
 
         Common.NotificationCenter.trigger(
           "contenttheme:dark",
-          window.uitheme.iscontentdark
+          window.uitheme.iscontentdark,
         );
       },
 
@@ -1044,7 +1172,7 @@ define(["core"], function () {
             theme_props[prop] = {
               size:
                 document.documentElement.style.getPropertyValue(
-                  "--font-size-base-app-custom"
+                  "--font-size-base-app-custom",
                 ) ||
                 window
                   .getComputedStyle(document.body)
@@ -1052,7 +1180,7 @@ define(["core"], function () {
                 "11px",
               name:
                 document.documentElement.style.getPropertyValue(
-                  "--font-family-base-custom"
+                  "--font-family-base-custom",
                 ) || 'Arial, Helvetica, "Helvetica Neue", sans-serif',
             };
           }

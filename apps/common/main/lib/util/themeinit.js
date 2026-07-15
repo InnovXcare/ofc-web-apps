@@ -47,16 +47,21 @@
   })();
 
   !window.uitheme && (window.uitheme = {});
+  const SDK_THEME_ID = "sdk-theme-id";
+  const SPARK_THEME_ID = "spark-theme-id";
+  function get_context_theme_id() {
+    try {
+      const embedded_in_sdk = window.parent !== window.top;
+      return embedded_in_sdk ? SDK_THEME_ID : SPARK_THEME_ID;
+    } catch (e) {
+      return SPARK_THEME_ID; 
+    }
+  }
 
-  // window.uitheme.DEFAULT_LIGHT_THEME_ID = !window.isIEBrowser
-  //   ? "theme-white"
-  //   : "theme-classic-light";
-  // window.uitheme.DEFAULT_DARK_THEME_ID = !window.isIEBrowser
-  //   ? "theme-night"
-  //   : "theme-dark";
+  const context_theme_id = get_context_theme_id();
 
-  window.uitheme.DEFAULT_LIGHT_THEME_ID = "spark-theme-id";
-  window.uitheme.DEFAULT_DARK_THEME_ID = "spark-theme-id";
+  window.uitheme.DEFAULT_LIGHT_THEME_ID = context_theme_id;
+  window.uitheme.DEFAULT_DARK_THEME_ID = context_theme_id;
 
   window.uitheme.set_id = function (id) {
     if (id == "theme-system") this.adapt_to_system_theme();
@@ -122,15 +127,15 @@
         const value = sp_scale[key];
         icons.push(
           "--sprite-button-" +
-            n +
-            "-" +
-            key +
-            ":url(" +
-            base_url +
-            "icons" +
-            n +
-            value +
-            ".png)"
+          n +
+          "-" +
+          key +
+          ":url(" +
+          base_url +
+          "icons" +
+          n +
+          value +
+          ".png)",
         );
       }
     });
@@ -159,11 +164,11 @@
 
   inject_style_tag(
     ":root .theme-dark {" +
-      "--toolbar-header-document: #2a2a2a; --toolbar-header-spreadsheet: #2a2a2a;" +
-      "--toolbar-header-presentation: #2a2a2a; --toolbar-header-pdf: #2a2a2a; --toolbar-header-visio: #2a2a2a;}" +
-      ":root .theme-contrast-dark {" +
-      "--toolbar-header-document: #1e1e1e; --toolbar-header-spreadsheet: #1e1e1e;" +
-      "--toolbar-header-presentation: #1e1e1e; --toolbar-header-pdf: #1e1e1e; --toolbar-header-visio: #1e1e1e;}"
+    "--toolbar-header-document: #2a2a2a; --toolbar-header-spreadsheet: #2a2a2a;" +
+    "--toolbar-header-presentation: #2a2a2a; --toolbar-header-pdf: #2a2a2a; --toolbar-header-visio: #2a2a2a;}" +
+    ":root .theme-contrast-dark {" +
+    "--toolbar-header-document: #1e1e1e; --toolbar-header-spreadsheet: #1e1e1e;" +
+    "--toolbar-header-presentation: #1e1e1e; --toolbar-header-pdf: #1e1e1e; --toolbar-header-visio: #1e1e1e;}",
   );
 
   let objtheme = window.uitheme.colors
@@ -202,7 +207,7 @@
             !!objtheme.colors[i] &&
               document.documentElement.style.setProperty(
                 "--" + i,
-                objtheme.colors[i]
+                objtheme.colors[i],
               );
           });
 
@@ -217,7 +222,7 @@
             rootColors.push("--" + c + ":" + objtheme.colors[c]);
           }
           inject_style_tag(
-            ":root ." + objtheme.id + "{" + rootColors.join(";") + ";}"
+            ":root ." + objtheme.id + "{" + rootColors.join(";") + ";}",
           );
 
           inject_style_tag("." + objtheme.id + "{" + colors.join(";") + ";}");
@@ -226,7 +231,7 @@
         if (objtheme.icons && !(window.uitheme.embedicons === true)) {
           window.uitheme.apply_icons_from_url(
             objtheme.id,
-            objtheme.icons.basepath
+            objtheme.icons.basepath,
           );
         }
 
