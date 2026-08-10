@@ -55,8 +55,20 @@
   //   ? "theme-night"
   //   : "theme-dark";
 
-  window.uitheme.DEFAULT_LIGHT_THEME_ID = "spark-theme-id";
-  window.uitheme.DEFAULT_DARK_THEME_ID = "spark-theme-id";
+
+  const SDK_THEME_ID = "sdk-theme-id";
+  const SPARK_THEME_ID = "spark-theme-id";
+  function get_context_theme_id() {
+    try {
+      const embedded_in_sdk = window.parent !== window.top;
+      return embedded_in_sdk ? SDK_THEME_ID : SPARK_THEME_ID;
+    } catch (e) {
+      return SPARK_THEME_ID; 
+    }
+  }
+  const context_theme_id = get_context_theme_id();
+  window.uitheme.DEFAULT_LIGHT_THEME_ID = context_theme_id;
+  window.uitheme.DEFAULT_DARK_THEME_ID = context_theme_id;
 
   window.uitheme.set_id = function (id) {
     if (id == "theme-system") this.adapt_to_system_theme();
