@@ -1104,6 +1104,33 @@ define([
                 var action = {id: id, type: type};
                 this.stackLongActions.push(action);
                 this.setLongActionView(action);
+
+                // No timeout upstream, so an action whose end event never fires sticks the
+                // mask forever. Only force-clear ids safe to abandon (Save/Open/etc excluded).
+                var watchdogIds = {
+                    [Asc.c_oAscAsyncAction['LoadFont']]: 'LoadFont',
+                    [Asc.c_oAscAsyncAction['LoadDocumentFonts']]: 'LoadDocumentFonts',
+                    [Asc.c_oAscAsyncAction['LoadImage']]: 'LoadImage',
+                    [Asc.c_oAscAsyncAction['LoadDocumentImages']]: 'LoadDocumentImages',
+                    [Asc.c_oAscAsyncAction['UploadImage']]: 'UploadImage'
+                };
+                var actionName = watchdogIds[id] || ('Unknown action id: ' + id);
+
+                if (type == Asc.c_oAscAsyncActionType.BlockInteraction) {
+                    var me = this;
+                    setTimeout(function () {
+                        if (me.stackLongActions.exist(action)) {
+                            var isSafe = id in watchdogIds;
+                            var msg = '[loadmask-watchdog] ' + actionName + ' did not complete within 20s';
+                            if (isSafe) {
+                                console.warn(msg + ', force-clearing to prevent stuck spinner');
+                                me.onLongActionEnd(type, id);
+                            } else {
+                                console.warn(msg + ' (NOT in safe-to-abandon list, cannot auto-clear — may require restart)');
+                            }
+                        }
+                    }, 20000);
+                }
             },
 
             onLongActionEnd: function(type, id) {
