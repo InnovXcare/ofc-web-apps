@@ -401,6 +401,32 @@ define([
                 this.editorConfig = $.extend(this.editorConfig, data.config);
 
                 this.appOptions.customization   = this.editorConfig.customization;
+                // Opt-in report commands. Capture before the editor consumes function keys.
+                if (this.reportShortcutListener) {
+                    window.removeEventListener('keydown', this.reportShortcutListener, true);
+                    this.reportShortcutListener = null;
+                }
+                var reportShortcuts = this.appOptions.customization && this.appOptions.customization.reportShortcuts;
+                if (reportShortcuts && typeof reportShortcuts.parentOrigin === 'string' && window.parent !== window) {
+                    var reportParentOrigin = reportShortcuts.parentOrigin;
+                    this.reportShortcutListener = function(event) {
+                        var action = { F4: 'mic-on', F5: 'generate', F6: 'draft', F8: 'finalize' }[event.key];
+                        if (!action || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || event.isComposing) return;
+                        var dialogs = document.querySelectorAll('[role="dialog"], [role="alertdialog"], .asc-window.modal, dialog[open]');
+                        if (Array.prototype.some.call(dialogs, function(dialog) { return dialog.getClientRects().length > 0; })) return;
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                        if (event.repeat) return;
+                        window.parent.postMessage({
+                            location: '@onlyofficeeditor',
+                            from: 'reportShortcut',
+                            action: action
+                        // Packaged Electron's file:// parent has an opaque origin.
+                        }, reportParentOrigin === 'null' ? '*' : reportParentOrigin);
+                    };
+                    window.addEventListener('keydown', this.reportShortcutListener, true);
+                }
+
                 this.appOptions.canRenameAnonymous = !((typeof (this.appOptions.customization) == 'object') && (typeof (this.appOptions.customization.anonymous) == 'object') && (this.appOptions.customization.anonymous.request===false));
                 this.appOptions.guestName = (typeof (this.appOptions.customization) == 'object') && (typeof (this.appOptions.customization.anonymous) == 'object') &&
                                 (typeof (this.appOptions.customization.anonymous.label) == 'string') && this.appOptions.customization.anonymous.label.trim()!=='' ?
