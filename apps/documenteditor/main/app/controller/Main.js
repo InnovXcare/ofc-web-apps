@@ -410,7 +410,7 @@ define([
                 if (reportShortcuts && typeof reportShortcuts.parentOrigin === 'string' && window.parent !== window) {
                     var reportParentOrigin = reportShortcuts.parentOrigin;
                     this.reportShortcutListener = function(event) {
-                        var action = { F4: 'mic-on', F5: 'generate', F6: 'draft', F8: 'finalize' }[event.key];
+                        var action = { F4: 'mic-toggle', F6: 'generate', F8: 'draft', F10: 'finalize' }[event.key];
                         if (!action || event.ctrlKey || event.metaKey || event.altKey || event.shiftKey || event.isComposing) return;
                         var dialogs = document.querySelectorAll('[role="dialog"], [role="alertdialog"], .asc-window.modal, dialog[open]');
                         if (Array.prototype.some.call(dialogs, function(dialog) { return dialog.getClientRects().length > 0; })) return;
