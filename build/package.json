@@ -45,7 +45,7 @@
     "requirejs": "2.3.7",
     "fast-xml-parser": "5.11.0",
     "serialize-javascript": "7.1.0",
-    "qs": "6.15.3",
+    "qs": "6.16.0",
     "less-plugin-clean-css@1.5.1": {
       "clean-css": "5.3.3"
     }
