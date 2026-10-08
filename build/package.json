@@ -48,7 +48,8 @@
     "qs": "6.16.0",
     "less-plugin-clean-css@1.5.1": {
       "clean-css": "5.3.3"
-    }
+    },
+    "form-data": "2.5.6"
   },
   "devDependencies": {
     "chai": "^5.1.0",
